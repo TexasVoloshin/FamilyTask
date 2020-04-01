@@ -1,15 +1,19 @@
 package entities;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.validation.constraints.Size;
+import javax.persistence.JoinTable;
 import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.CascadeType;
 
 @Entity
 public class User {
     @Id
-    @Email
+   @Email
     @NotEmpty
     @Column(unique = true)
     private String email;
@@ -20,9 +24,11 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Task> tasks;
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "USER_ROLES", joinColumns={
-            @JoinColumn(name = "USER_EMAIL", referencedColumnName = "email") }, inverseJoinColumns = {
-            @JoinColumn(name = "ROLE_NAME", referencedColumnName = "name") })
+    @JoinTable(name = "USER_ROLES",
+            joinColumns=@JoinColumn(
+                    name = "USER_EMAIL", referencedColumnName = "email") ,
+            inverseJoinColumns = @JoinColumn(
+                    name = "ROLE_NAME", referencedColumnName = "name") )
 
 
     private List<Role> roles;
