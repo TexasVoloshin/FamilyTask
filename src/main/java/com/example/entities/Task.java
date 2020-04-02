@@ -1,4 +1,4 @@
-package entities;
+package com.example.entities;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;

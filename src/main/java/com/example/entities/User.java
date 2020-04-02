@@ -1,9 +1,10 @@
-package entities;
+package com.example.entities;
 
 import javax.persistence.*;
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
 
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import javax.persistence.JoinTable;
 import java.util.List;
