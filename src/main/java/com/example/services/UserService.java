@@ -33,8 +33,13 @@ public class UserService {
         user.setRoles(roles);
         userRepository.save(user);
     }
-    public User findOne(String email){
-        return userRepository.findOne(email);
+    public User findByEmail(String email){
+        return userRepository.getOne(email);
 
     }
+
+ /* public static class findOne extends User {
+        public findOne(String emial) {
+        }
+    }*/
 }
