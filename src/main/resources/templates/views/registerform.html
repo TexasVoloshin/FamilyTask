@@ -8,19 +8,27 @@
 <body>
 
 <div  layout:fragment="content" class="container mySpace">
+    <div class="alert alert-info" th:if="${exist}"></div>
+    <p class="text text-center"> User with this email already exists!</p>
     <action form="@{/register} " th:object=${user} method="post">
     <div class="form-group">
 
     <label asp-for="email" class="form-control-label"></label>
         <input type="text" class="form-control" th:field="*{email}" >
+        <div class="text text-danger" th:if="${#fields.hasErrors('email')}" th:errors=*{email}></div>
 
         <label asp-for="email" class="form-control-label"></label>
 
         <input type="text" class="form-control" th:field="*{password}" >
         <label asp-for="password" class="form-control-label"></label>
 
+        <div class="text text-danger" th:if="${#fields.hasErrors('password')}" th:errors=*{password}></div>
+
         <input type="text" class="form-control" th:field="*{name}" >
         <label asp-for="name" class="form-control-label"></label>
+
+        <div class="text text-danger" th:if="${#fields.hasErrors('name')}" th:errors=*{name}></div>
+
 
 
 
