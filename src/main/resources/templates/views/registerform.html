@@ -1,40 +1,45 @@
 <!DOCTYPE html>
-<html
-        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml"
-        layout:decorate="~{fragments/main_layout}">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/main_layout}">
 <head>
     <title>Register Form</title>
 </head>
 <body>
 
-<div  layout:fragment="content" class="container mySpace">
-    <div class="alert alert-info" th:if="${exist}"></div>
-    <p class="text text-center"> User with this email already exists!</p>
-    <action form="@{/register} " th:object=${user} method="post">
-    <div class="form-group">
-
-    <label asp-for="email" class="form-control-label"></label>
-        <input type="text" class="form-control" th:field="*{email}" >
-        <div class="text text-danger" th:if="${#fields.hasErrors('email')}" th:errors=*{email}></div>
-
-        <label asp-for="email" class="form-control-label"></label>
-
-        <input type="text" class="form-control" th:field="*{password}" >
-        <label asp-for="password" class="form-control-label"></label>
-
-        <div class="text text-danger" th:if="${#fields.hasErrors('password')}" th:errors=*{password}></div>
-
-        <input type="text" class="form-control" th:field="*{name}" >
-        <label asp-for="name" class="form-control-label"></label>
-
-        <div class="text text-danger" th:if="${#fields.hasErrors('name')}" th:errors=*{name}></div>
-
-
-
-
+<div layout:fragment="content" class="container mySpace">
+    <!--/*@thymesVar id="exist" type=""*/-->
+    <div class="alert alert-info" th:if="${exist}">
+        <p class="text text-center">
+            User with this Email already Exist
+        </p>
     </div>
-        <div><input type="submit" value="Submit" class="btn  btn-primary" ></div>
-    </action>
+    <!--/*@thymesVar id="user" type=""*/-->
+    <form th:action="@{/register}" th:object="${user}" method="post">
+
+        <div class="form-group">
+            <label for="email" class="form-control-label">Email</label> <input
+                type="text" class="form-control" th:field="*{email}" id="email" />
+            <div class="text text-danger" th:if="${#fields.hasErrors('email')}"
+                 th:errors="*{email}"></div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="form-control-label">Password</label> <input
+                type="password" class="form-control" th:field="*{password}" id="password" />
+            <div class="text text-danger"
+                 th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+
+        </div>
+        <div class="form-group">
+            <label for="name" class="form-control-label">name</label> <input
+                type="text" class="form-control" th:field="*{name}" id="name" />
+            <div class="text text-danger" th:if="${#fields.hasErrors('name')}"
+                 th:errors="*{name}"></div>
+
+        </div>
+        <input type="submit" value="Submit" class="btn btn-primary" />
+
+    </form>
 </div>
 </body>
 </html>

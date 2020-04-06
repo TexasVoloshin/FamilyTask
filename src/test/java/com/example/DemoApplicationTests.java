@@ -35,21 +35,21 @@ public class DemoApplicationTests {
         }
 
         Task userTask = new Task("03/01/2018", "00:11", "11:00", "You need to work today");
-        User user = userService.findByEmail("testUser@mail.com");
+        User user = userService.findUserByEmail("testUser@mail.com");
         taskService.addTask(userTask, user);
     }
 
     @Test
     public void testUser() {
-        User user = userService.findByEmail("testUser@mail.com");
+        User user = userService.findUserByEmail("testUser@mail.com");
         assertNotNull(user);
-        User admin = userService.findByEmail("testAdmin@mail.com");
+        User admin = userService.findUserByEmail("testAdmin@mail.com");
         assertEquals(admin.getEmail(),"testAdmin@mail.com");
     }
 
     @Test
     public void testTask() {
-        User user = userService.findByEmail("testUser@mail.com");
+        User user = userService.findUserByEmail("testUser@mail.com");
         List<Task> task = taskService.findUserTask(user);
         assertNotNull(task);
 

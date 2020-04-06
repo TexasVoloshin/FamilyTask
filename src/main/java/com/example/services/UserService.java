@@ -8,6 +8,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 @Service
@@ -24,6 +26,8 @@ public class UserService {
         user.setRoles(roles);
         userRepository.save(user);
     }
+
+
     public void createAdim(User user){
         BCryptPasswordEncoder encoder= new BCryptPasswordEncoder();
         user.setPassword(encoder.encode(user.getPassword()));
@@ -33,21 +37,20 @@ public class UserService {
         user.setRoles(roles);
         userRepository.save(user);
     }
-    public User findByEmail(String email){
-        return userRepository.getOne(email);
 
+
+
+    public User findUserByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 
     public boolean isUserPresent(String email) {
-        User u= userRepository.getOne(email);
+        // TODO Auto-generated method stub
+        User u=userRepository.findByEmail(email);
         if(u!=null)
             return true;
 
         return false;
     }
 
- /* public static class findOne extends User {
-        public findOne(String emial) {
-        }
-    }*/
 }
