@@ -11,12 +11,12 @@
     <form th:action="@{/addTask}" th:object="${task}" method="post">
 
         <div class="form-group">
-<!--
+
             <label for="Date" class="form-control-label">Date</label> <input
 
         type="date" class="form-control" th:field="*{date}" id="date" />-->
-         <!--   <div class="text text-danger" th:if="${#fields.hasErrors('date')}"
-                 th:errors="*{date}"></div>-->
+          <div class="text text-danger" th:if="${#fields.hasErrors('date')}"
+                 th:errors="*{date}"></div>
         </div>
         <div class="form-group">
             <label for="startTime" class="form-control-label">StartTime</label>

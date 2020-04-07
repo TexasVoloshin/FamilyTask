@@ -9,12 +9,13 @@ public class Task {
     @GeneratedValue
     private Long id;
     @NotEmpty
-    private String data;
+    private String date;
     @NotEmpty
     private  String startTime;
     @NotEmpty
     private  String stopTime;
     @NotEmpty
+    @Column(length=1000)
     private String description;
     @ManyToOne
     @JoinColumn(name = "USER_EMAIL")
@@ -30,12 +31,12 @@ public class Task {
         this.id = id;
     }
 
-    public String getData() {
-        return data;
+    public String getDate() {
+        return date;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setDate(String data) {
+        this.date = data;
     }
 
     public String getStartTime() {
@@ -69,16 +70,16 @@ public class Task {
     public void setUser(User user) {
         this.user = user;
     }
-    public Task(String data, String startTime, String stopTime, String description, User user) {
-        this.data = data;
+    public Task(String date, String startTime, String stopTime, String description, User user) {
+        this.date = date;
         this.startTime = startTime;
         this.stopTime = stopTime;
         this.description = description;
         this.user = user;
     }
 
-    public Task(String data, String startTime, String stopTime, String description) {
-        this.data = data;
+    public Task(String date, String startTime, String stopTime, String description) {
+        this.date = date;
         this.startTime = startTime;
         this.stopTime = stopTime;
         this.description = description;
