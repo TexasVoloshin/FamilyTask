@@ -10,8 +10,9 @@ public class IndexController {
 
 
     @GetMapping("/")
-    public String showIndexPage(){
-        ModelAndView modelAndView = new ModelAndView("index");
-        return "index";
+    public ModelAndView showIndexPage(){
+        ModelAndView model = new ModelAndView();
+        model.setViewName("index");
+        return model;
     }
 }

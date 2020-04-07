@@ -30,25 +30,28 @@ public class RegisterController {
 
 
     @PostMapping("/register")
-    public String registerUser(@Valid User user, BindingResult bindingResult, Model model) {
-        ModelAndView modelAndView = new ModelAndView("registerForm");
-        ModelAndView modelAndView2 = new ModelAndView("success");
+    public ModelAndView registerUser(@Valid User user, BindingResult bindingResult){
+        ModelAndView model = new ModelAndView();
+        ModelAndView model2 = new ModelAndView();
+        model.setViewName("views/registerForm");
+        model2.setViewName("views/success");
+        /*ModelAndView modelAndView = new ModelAndView("registerForm");
+        ModelAndView modelAndView2 = new ModelAndView("success");*/
 
         if(bindingResult.hasErrors()) {
-            return "views/registerForm";
+            return model;
         }
         if(userService.isUserPresent(user.getEmail())) {
-            model.addAttribute("exist",true);
+            model.addObject("exist",true);
 
-            return "views/registerForm";
+            return model;
 
         }
         userService.createUser(user);
 
-        return "views/success";
+        return model2;
 
     }
-
 
 
 
