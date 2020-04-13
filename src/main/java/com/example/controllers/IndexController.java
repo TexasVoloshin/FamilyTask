@@ -15,4 +15,13 @@ public class IndexController {
         model.setViewName("index");
         return model;
     }
+
+
+
+    @GetMapping("/login")
+    public ModelAndView showLoginPage(){
+        ModelAndView model = new ModelAndView();
+        model.setViewName("views/loginform");
+        return model;
+    }
 }
